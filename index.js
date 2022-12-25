@@ -86,3 +86,23 @@ var finances = [
 ['Jan-2017', 138230],
 ['Feb-2017', 671099]
 ];
+
+// calculate number of months in given dataset
+let monthCount = finances.length;
+console.log("Total Months: "+monthCount);
+
+// The net total amount of Profit/Losses over the entire period.
+let totalAmount = 0;
+
+for (let i = 0; i < 5; i++) {
+    // console.log(finances[i])  
+    for (let j = 1; j < finances[i].length; j++) {
+        console.log(finances[i][j]);
+        totalAmount += finances[i][j];
+    }
+    
+}
+console.log("Total: $"+totalAmount);
+
+// average of the changes in Profit/Losses over the entire period
+
