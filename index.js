@@ -94,10 +94,10 @@ console.log("Total Months: "+monthCount);
 // The net total amount of Profit/Losses over the entire period.
 let totalAmount = 0;
 
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < finances.length; i++) {
     // console.log(finances[i])  
     for (let j = 1; j < finances[i].length; j++) {
-        console.log(finances[i][j]);
+        // console.log(finances[i][j]);
         totalAmount += finances[i][j];
     }
     
@@ -105,4 +105,8 @@ for (let i = 0; i < 5; i++) {
 console.log("Total: $"+totalAmount);
 
 // average of the changes in Profit/Losses over the entire period
+
+let avgChange = totalAmount/monthCount;
+
+console.log("Average  Change: $"+avgChange.toFixed(2))
 
