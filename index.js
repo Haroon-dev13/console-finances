@@ -96,10 +96,10 @@ let totalAmount = 0;
 
 for (let i = 0; i < finances.length; i++) {
     // console.log(finances[i])  
-    for (let j = 1; j < finances[i].length; j++) {
+    // for (let j = 1; j < finances[i].length; j++) {
         // console.log(finances[i][j]);
-        totalAmount += finances[i][j];
-    }
+        totalAmount += finances[i][1];
+    // }
     
 }
 console.log("Total: $"+totalAmount);
@@ -109,4 +109,22 @@ console.log("Total: $"+totalAmount);
 let avgChange = totalAmount/monthCount;
 
 console.log("Average  Change: $"+avgChange.toFixed(2))
+
+// The greatest increase in profits (date and amount) over the entire period.
+let greatestIncrease = 0;
+let greatestIncreaseMonth = 0;
+greatestIncreaseMonth = finances[0][0];
+greatestIncrease = finances[0][1];
+// console.log(greatestIncreaseMonth)
+// console.log(greatestIncrease)
+
+for (let i = 0; i < 85; i++) {
+        console.log(finances[i][1]);
+        // greatestIncrease = finances[i][1];
+        if(greatestIncrease < finances[i+1][1] ){
+            greatestIncreaseMonth = finances[i+1][0];
+            greatestIncrease = finances[i+1][1];
+        }
+}
+console.log("Greatest Increase in Profits: "+greatestIncreaseMonth+" ($"+greatestIncrease+")")
 
