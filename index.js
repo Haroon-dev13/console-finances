@@ -89,42 +89,55 @@ var finances = [
 
 // calculate number of months in given dataset
 let monthCount = finances.length;
-console.log("Total Months: "+monthCount);
 
 // The net total amount of Profit/Losses over the entire period.
 let totalAmount = 0;
 
-for (let i = 0; i < finances.length; i++) {
-    // console.log(finances[i])  
-    // for (let j = 1; j < finances[i].length; j++) {
-        // console.log(finances[i][j]);
-        totalAmount += finances[i][1];
-    // }
+// for (let i = 0; i < finances.length; i++) {
+//     // console.log(finances[i])  
+//     // for (let j = 1; j < finances[i].length; j++) {
+//         // console.log(finances[i][j]);
+//         totalAmount += finances[i][1];
+//     // }
     
-}
-console.log("Total: $"+totalAmount);
+// }
 
 // average of the changes in Profit/Losses over the entire period
 
-let avgChange = totalAmount/monthCount;
 
-console.log("Average  Change: $"+avgChange.toFixed(2))
 
 // The greatest increase in profits (date and amount) over the entire period.
+// The greatest decrease in losses (date and amount) over the entire period.
 let greatestIncrease = 0;
-let greatestIncreaseMonth = 0;
-greatestIncreaseMonth = finances[0][0];
-greatestIncrease = finances[0][1];
-// console.log(greatestIncreaseMonth)
-// console.log(greatestIncrease)
-
+let greatestDecrease = 0;
+greatestIncrease = finances[0];
+greatestDecrease = finances[0];
+//  console.log(greatestIncrease);
 for (let i = 0; i < 85; i++) {
-        console.log(finances[i][1]);
-        // greatestIncrease = finances[i][1];
-        if(greatestIncrease < finances[i+1][1] ){
-            greatestIncreaseMonth = finances[i+1][0];
-            greatestIncrease = finances[i+1][1];
-        }
+    for (let j = 1; j < finances[i].length; j++) {
+        // The net total amount of Profit/Losses over the entire period.
+        totalAmount += finances[i][j];
+        // find increase in profits.
+        if(greatestIncrease[1] < finances[i+1][j] ){
+            greatestIncrease = finances[i+1]
+        } 
+        // find decrease in losses  
+        if(greatestDecrease[1] > finances[i+1][j] ){
+            greatestDecrease = finances[i+1]
+        } 
+    }   
 }
-console.log("Greatest Increase in Profits: "+greatestIncreaseMonth+" ($"+greatestIncrease+")")
+
+let avgChange = totalAmount/monthCount;
+
+
+
+console.log("Financial Analysis");
+console.log("----------------------------");
+console.log("Total Months: "+monthCount);
+console.log("Total: $"+totalAmount);
+console.log("Average  Change: $"+avgChange.toFixed(2))
+console.log("Greatest Increase in Profits: "+greatestIncrease[0]+" ($"+greatestIncrease[1]+")")
+console.log("Greatest Decrease in Profits: "+greatestDecrease[0]+" ($"+greatestDecrease[1]+")")
+
 
