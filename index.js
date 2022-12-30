@@ -90,58 +90,48 @@ var finances = [
 // calculate number of months in given dataset
 let monthCount = finances.length;
 
-// The net total amount of Profit/Losses over the entire period.
-let totalAmount = 0;
-
 // track the total change in profits is from month to month
 var change = [];
-let newValue=0;
+let diffValue=0;
+let totalAmount = 0;
+let avgChange = 0;
 for (let i = 0; i < finances.length-1; i++) {
-    // c=c+1;
-    // for (let j = 1; j < finances[i].length; j++) {
-        // console.log("Month "+i+" "+finances[i][j])
-        newValue = parseInt(finances[i+1][1]-finances[i][1]);
-        change.push(finances[i][0],newValue);      
-    // }   
+        diffValue = parseInt(finances[i+1][1]-finances[i][1]);
+        change.push([finances[i+1][0],diffValue]);      
 }
-// console.log(change);
 
-// for (let i = 0; i < finances.length; i++) {
-//     // console.log(finances[i])  
-//     // for (let j = 1; j < finances[i].length; j++) {
-//         // console.log(finances[i][j]);
-//         totalAmount += finances[i][1];
-//     // }
-    
-// }
+// The net total amount of Profit/Losses over the entire period.
 
-// average of the changes in Profit/Losses over the entire period
-
+for (let i = 0; i <= finances.length-1; i++) {
+        totalAmount += finances[i][1];
+    }
 
 
 // The greatest increase in profits (date and amount) over the entire period.
 // The greatest decrease in losses (date and amount) over the entire period.
 let greatestIncrease = 0;
 let greatestDecrease = 0;
-greatestIncrease = finances[0];
-greatestDecrease = finances[0];
-//  console.log(greatestIncrease);
-for (let i = 0; i <= finances.length-1; i++) {
-        // The net total amount of Profit/Losses over the entire period.
-            totalAmount += finances[i][1];
-        // // find increase in profits.
-        // if(greatestIncrease[1] < finances[i+1][1] ){
-        //     greatestIncrease = finances[i+1]
-        // } 
-        // // find decrease in losses  
-        // if(greatestDecrease[1] > finances[i+1][1] ){
-        //     greatestDecrease = finances[i+1]
-        // }   
+let monthlyChange = 0;
+greatestIncrease = change[0];
+greatestDecrease = change[0];
+for (let i = 0; i < change.length-1; i++) {
+        monthlyChange += change[i][1];
+        // find increase in profits.
+        if(greatestIncrease[1] < change[i+1][1] ){
+            greatestIncrease = change[i+1]
+        } 
+        // find decrease in losses  
+        if(greatestDecrease[1] > change[i+1][1] ){
+            greatestDecrease = change[i+1]
+        }   
 }
+// console.log(change)
 
 
 
-let avgChange = totalAmount/monthCount;
+// average of the changes in Profit/Losses over the entire period
+
+avgChange = monthlyChange/monthCount;
 
 
 
