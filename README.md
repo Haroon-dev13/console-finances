@@ -11,8 +11,8 @@ To use this Website you do not need to install any software or tool.You just nee
 ## Usage
 This is a finance web application.I have calculated the profits and losses in given dataset..Given below is the screen short of output.
 
-* ### Large screenshort:
-![Finance](images/)
+* ### Console Finance Output:
+![Finance](images/finance.JPG)
 
 ## Credits
 N/A
